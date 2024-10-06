@@ -1,5 +1,6 @@
-import { Grid, Typography, Button } from "@mui/material";
+import { Grid, Typography, Button, Badge } from "@mui/material";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import IconButton from "@mui/material/IconButton";
 
 const Header = () => (
   <Grid
@@ -9,12 +10,19 @@ const Header = () => (
     sx={{ padding: 2, backgroundColor: "primary.main", color: "white" }}
   >
     <Grid item xs={6}>
-      <Typography variant="h6">My Website</Typography>
+      <Typography variant="h6">My Products</Typography>
     </Grid>
     <Grid item xs={6} container justifyContent="flex-end">
-      <Button color="inherit">Home</Button>
-      <Button color="inherit">About</Button>
-      <Button startIcon={<ShoppingCartOutlinedIcon sx={{ mx: 2 }} />}> </Button>
+      <Grid sx={{ display: { xs: "none", sm: "flex" } }}>
+        <Button color="inherit">Home</Button>
+        <Button color="inherit">About</Button>
+      </Grid>
+
+      <IconButton color="inherit">
+        <Badge badgeContent={4} color="secondary">
+          <ShoppingCartOutlinedIcon />
+        </Badge>
+      </IconButton>
     </Grid>
   </Grid>
 );
