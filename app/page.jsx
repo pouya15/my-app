@@ -1,6 +1,6 @@
 "use client";
 
-import HomePage from "../ui/Layout/homePage/HomePage";
+import HomePage from "../ui/homePage/HomePage";
 import "./globals.css";
 
 export default function Home() {

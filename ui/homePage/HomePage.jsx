@@ -1,7 +1,8 @@
-
 import React, { useEffect, useState } from "react";
+import Card from "../components/Card";
+import { Grid2 } from "@mui/material";
 
-const HomePage = () => {
+const HomePage = ( {cardDetail}) => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -12,14 +13,18 @@ const HomePage = () => {
       });
   }, []);
 
+  
+  
+
   return (
-    <><ul>
-      {products.map((product) => 
-       <li> {product.title}</li>
-      )}
-      </ul>
+    <>
+      <Grid2 container>
+        <Card items={products}  />
+      </Grid2>
     </>
   );
 };
 
 export default HomePage;
+
+
