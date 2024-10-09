@@ -1,3 +1,4 @@
+"use client";
 import Container from "@mui/material/Container";
 import Header from "../ui/Layout/Header";
 import ThemeProvide from "../theme/ThemeProvider";

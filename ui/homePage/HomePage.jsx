@@ -1,8 +1,9 @@
+"use client";
 import React, { useEffect, useState } from "react";
 import Card from "../components/Card";
 import { Grid2 } from "@mui/material";
 
-const HomePage = ( {cardDetail}) => {
+const HomePage = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -13,18 +14,13 @@ const HomePage = ( {cardDetail}) => {
       });
   }, []);
 
-  
-  
-
   return (
     <>
       <Grid2 container>
-        <Card items={products}  />
+        <Card items={products} />
       </Grid2>
     </>
   );
 };
 
 export default HomePage;
-
-

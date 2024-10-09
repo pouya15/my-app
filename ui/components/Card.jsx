@@ -1,3 +1,4 @@
+"use client";
 import { Box, Grid2, Typography } from "@mui/material";
 import Link from "next/link";
 import React from "react";
@@ -6,8 +7,8 @@ export default function Card({ items }) {
   return (
     <>
       <Grid2 container>
-        {items.map((item, index) => (
-          <Grid2 key={index} item md={4} p={2}>
+        {items.map((item) => (
+          <Grid2 key={item.id} item md={4} p={2}>
             <Link
               href="/main/cardDetail"
               passHref
