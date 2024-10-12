@@ -6,9 +6,9 @@ import React from "react";
 export default function Card({ items }) {
   return (
     <>
-      <Grid2 container>
+      <Grid2 container >
         {items.map((item) => (
-          <Grid2 key={item.id} item md={4} p={2}>
+          <Grid2 key={item.id} item md={4} p={2} >
             <Link
               href="/main/cardDetail"
               passHref
@@ -16,10 +16,11 @@ export default function Card({ items }) {
             >
               <Box
                 sx={{
+                  backgroundColor: "white",
                   border: "1px solid #e0e0e0",
                   borderRadius: "8px",
                   overflow: "hidden",
-                  boxShadow: 2,
+                  boxShadow: 4,
                   transition: "0.3s",
                   "&:hover": {
                     boxShadow: 4,

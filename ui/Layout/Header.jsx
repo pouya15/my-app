@@ -13,10 +13,12 @@ const Header = () => {
       sx={{
         p: 2,
         mb: 2,
-        backgroundColor: "primary.main",
-        color: "white",
+        backgroundColor: "white",
+        color: "black",
         position: "sticky",
         top: 0,
+        boxShadow: 4,
+
       }}
     >
       <Grid item xs={6}>
@@ -25,7 +27,7 @@ const Header = () => {
       <Grid item xs={6} container justifyContent="flex-end">
         <Grid sx={{ display: { xs: "none", sm: "flex" } }}>
           <Button color="inherit">Home</Button>
-          <Button color="inherit" onClick={() => router.push("/about")}>
+          <Button color="inherit">
             About
           </Button>
         </Grid>
