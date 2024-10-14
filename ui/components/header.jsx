@@ -4,7 +4,7 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import IconButton from "@mui/material/IconButton";
 import Link from "next/link";
 
-const Header = () => {
+const Header = ({ count }) => {
   return (
     <Grid
       container
@@ -24,7 +24,7 @@ const Header = () => {
       <Grid item xs={6} container justifyContent="flex-end">
         <Grid>
           <Link href="/">
-            <Button sx={{color:"black"}}>Home</Button>
+            <Button sx={{ color: "black" }}>Home</Button>
           </Link>
           <Link href="/main/about">
             <Button sx={{ textDecoration: "none", color: "black" }}>
@@ -32,12 +32,13 @@ const Header = () => {
             </Button>
           </Link>
         </Grid>
-
-        <IconButton color="inherit">
-          <Badge badgeContent={5} color="secondary">
-            <ShoppingCartOutlinedIcon />
-          </Badge>
-        </IconButton>
+        <Link href='/main/cart'>
+          <IconButton color="inherit">
+            <Badge badgeContent={count} color="secondary">
+              <ShoppingCartOutlinedIcon />
+            </Badge>
+          </IconButton>
+        </Link>
       </Grid>
     </Grid>
   );

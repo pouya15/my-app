@@ -1,7 +1,7 @@
 "use client";
 
-import HomePage from "./main/homePage/HomePage";
-import "./globals.css";
+import HomePage from "./main/homePage/page";
+
 
 export default function Home() {
   return (
