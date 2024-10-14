@@ -2,11 +2,9 @@
 import { Grid, Typography, Button, Badge } from "@mui/material";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import IconButton from "@mui/material/IconButton";
-// import { useRouter } from "next/router";
+import Link from "next/link";
 
 const Header = () => {
-  // const router = useRouter();
-
   return (
     <Grid
       container
@@ -18,18 +16,21 @@ const Header = () => {
         position: "sticky",
         top: 0,
         boxShadow: 4,
-
       }}
     >
       <Grid item xs={6}>
         <Typography variant="h6">My Products</Typography>
       </Grid>
       <Grid item xs={6} container justifyContent="flex-end">
-        <Grid sx={{ display: { xs: "none", sm: "flex" } }}>
-          <Button color="inherit">Home</Button>
-          <Button color="inherit">
-            About
-          </Button>
+        <Grid>
+          <Link href="/">
+            <Button sx={{color:"black"}}>Home</Button>
+          </Link>
+          <Link href="/main/about">
+            <Button sx={{ textDecoration: "none", color: "black" }}>
+              About
+            </Button>
+          </Link>
         </Grid>
 
         <IconButton color="inherit">

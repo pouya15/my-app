@@ -1,20 +1,25 @@
 "use client";
-import { Box, Grid2, Typography } from "@mui/material";
+import { Grid2, Typography } from "@mui/material";
 import Link from "next/link";
 import React from "react";
 
 export default function Card({ items }) {
   return (
     <>
-      <Grid2 container >
+      <Grid2 container>
         {items.map((item) => (
-          <Grid2 key={item.id} item md={4} p={2} >
+          <Grid2
+            key={item.id}
+            item
+            size={{ xs: 12, sm: 6, md: 4, lg: 3 }}
+            p={2}
+          >
             <Link
-              href="/main/cardDetail"
+              href={`/main/cardDetail/${item.id}`}
               passHref
               style={{ textDecoration: "none", color: "inherit" }}
             >
-              <Box
+              <Grid2
                 sx={{
                   backgroundColor: "white",
                   border: "1px solid #e0e0e0",
@@ -23,30 +28,45 @@ export default function Card({ items }) {
                   boxShadow: 4,
                   transition: "0.3s",
                   "&:hover": {
-                    boxShadow: 4,
+                    boxShadow: 14,
                   },
                   display: "flex",
                   flexDirection: "column",
-                  padding: "20px",
+                  p: 2.5,
+                  height: "100%",
                 }}
               >
                 <img
                   src={item.image}
                   alt="Description"
-                  style={{ width: "100%", height: "auto" }}
+                  style={{ width: "100%", height: "300px", objectFit: 'contain' }}
                 />
-                <Box p={2} sx={{ flexGrow: 1 }}>
-                  <Typography variant="h5" gutterBottom>
+                <Grid2 p={2} sx={{ flexGrow: 1, alignItems: "flex-end" }}>
+                  <Typography variant="h5" gutterBottom sx={{
+                    display: '-webkit-box',
+                    WebkitBoxOrient: 'vertical',
+                    overflow: 'hidden',
+                    WebkitLineClamp: 2, 
+                    lineHeight: '1.5em', 
+                    maxHeight: '3em',
+                }}>
                     {item.title}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" color="text.secondary" sx={{
+                    display: '-webkit-box',
+                    WebkitBoxOrient: 'vertical',
+                    overflow: 'hidden',
+                    WebkitLineClamp: 2, 
+                    lineHeight: '1.5em', 
+                    maxHeight: '3em',
+                }}>
                     {item.description}
                   </Typography>
                   <Typography mt={2} variant="h5" color="red">
                     Price: {item.price}$
                   </Typography>
-                </Box>
-              </Box>
+                </Grid2>
+              </Grid2>
             </Link>
           </Grid2>
         ))}

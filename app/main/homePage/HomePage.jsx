@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Card from "../components/Card";
+import Card from "@/ui/components/Card";
 import { Grid2 } from "@mui/material";
 
 const HomePage = () => {

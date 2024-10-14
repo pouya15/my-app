@@ -9,7 +9,7 @@ export default function RootLayout({ children }) {
       <body>
         <ThemeProvide>
           <Header />
-          <Container maxWidth="sm">{children}</Container>
+          <Container maxWidth="xl">{children}</Container>
         </ThemeProvide>
       </body>
     </html>
