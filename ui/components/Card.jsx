@@ -1,9 +1,9 @@
 "use client";
 import { Grid2, Typography } from "@mui/material";
 import Link from "next/link";
-import React from "react";
 
 export default function Card({ items }) {
+  
   return (
     <>
       <Grid2 container>

@@ -1,10 +1,15 @@
 "use client";
+import React, { useContext, useState } from "react";
+import CartContext from "@/app/Contexts/cartContext";
+
 import { Grid, Typography, Button, Badge } from "@mui/material";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import IconButton from "@mui/material/IconButton";
 import Link from "next/link";
 
-const Header = ({ count }) => {
+const Header = () => {
+  const { cart } = useContext(CartContext);
+
   return (
     <Grid
       container
@@ -32,9 +37,14 @@ const Header = ({ count }) => {
             </Button>
           </Link>
         </Grid>
-        <Link href='/main/cart'>
-          <IconButton color="inherit">
-            <Badge badgeContent={count} color="secondary">
+        <Link href="/main/cart">
+          <IconButton sx={{ color: "black" }}>
+            <Badge
+              badgeContent={
+                cart.length && cart.map((i) => i.count)?.reduce((i, j) => i + j)
+              }
+              color="secondary"
+            >
               <ShoppingCartOutlinedIcon />
             </Badge>
           </IconButton>

@@ -47,7 +47,7 @@ const CardDetail = () => {
               Price: {detailProduct.price}$
             </Typography>
             <Grid2>
-              <AddToCartCounter />
+              <AddToCartCounter item={detailProduct} />
             </Grid2>
           </Grid2>
         </Grid2>

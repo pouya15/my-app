@@ -16,9 +16,9 @@ const HomePage = () => {
 
   return (
     <>
-      <Grid2 container>
-        <Card items={products} />
-      </Grid2>
+        <Grid2 container>
+          <Card items={products} />
+        </Grid2>
     </>
   );
 };
