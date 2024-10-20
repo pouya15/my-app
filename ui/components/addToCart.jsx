@@ -1,6 +1,6 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Button, Typography, Box } from "@mui/material";
-import CartContext from "@/app/Contexts/cartContext";
+import CartContext from "@/ui/components/Contexts/cartContext";
 
 const AddToCartCounter = ({ item }) => {
   const { cart, setCart } = useContext(CartContext);
@@ -28,7 +28,6 @@ const AddToCartCounter = ({ item }) => {
           },
         ]);
   };
- 
 
   return (
     <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
@@ -36,10 +35,14 @@ const AddToCartCounter = ({ item }) => {
         Add
       </Button>
       <Typography variant="h6">
-        {/* {cart.map((i) => i.count).reduce((i, j) => i + j)} */}
-        {cart.filter((i) => i.id === item.id)[0]?.count}
+        {cart.filter((i) => i.id === item.id)[0]?.count || 0}
       </Typography>
-      <Button variant="outlined" color="error" onClick={handleRemoveFromCart}>
+      <Button
+        variant="outlined"
+        color="error"
+        disabled={!cart.filter((i) => i.id === item.id)[0]?.count}
+        onClick={handleRemoveFromCart}
+      >
         Remove
       </Button>
     </Box>

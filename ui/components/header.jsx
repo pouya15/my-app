@@ -1,6 +1,6 @@
 "use client";
 import React, { useContext, useState } from "react";
-import CartContext from "@/app/Contexts/cartContext";
+import CartContext from "@/ui/components/Contexts/cartContext";
 
 import { Grid, Typography, Button, Badge } from "@mui/material";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
@@ -24,7 +24,9 @@ const Header = () => {
       }}
     >
       <Grid item xs={6}>
-        <Typography variant="h6">My Products</Typography>
+          <Typography variant="h6" textDecoration='none'>
+            My Products
+          </Typography>
       </Grid>
       <Grid item xs={6} container justifyContent="flex-end">
         <Grid>
