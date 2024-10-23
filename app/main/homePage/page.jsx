@@ -2,9 +2,13 @@
 import React, { useEffect, useState } from "react";
 import Card from "@/ui/components/card";
 import { Grid2 } from "@mui/material";
+import CategorySelector from "../categorySelector/page";
+import ProductContext from "@/ui/components/Contexts/productContext";
+import CategorySelectorr from "@/ui/components/categorySelector";
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
@@ -14,11 +18,22 @@ const HomePage = () => {
       });
   }, []);
 
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+  };
+
+  const filteredProducts = selectedCategory
+    ? products.filter((product) => product.category === selectedCategory)
+    : products;
+
   return (
     <>
-      <Grid2 container>
-        <Card items={products} />
-      </Grid2>
+      <ProductContext.Provider value={{ products, setProducts }}>
+        <Grid2 container>
+          <CategorySelectorr onCategoryChange={handleCategoryChange} />
+          <Card items={filteredProducts} />
+        </Grid2>
+      </ProductContext.Provider>
     </>
   );
 };

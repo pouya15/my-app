@@ -3,11 +3,10 @@ import { Grid2, Typography } from "@mui/material";
 import Link from "next/link";
 
 export default function Card({ items }) {
-  
   return (
     <>
       <Grid2 container>
-        {items.map((item) => (
+        {items?.map((item) => (
           <Grid2
             key={item.id}
             item
@@ -39,27 +38,40 @@ export default function Card({ items }) {
                 <img
                   src={item.image}
                   alt="Description"
-                  style={{ width: "100%", height: "300px", objectFit: 'contain' }}
+                  style={{
+                    width: "100%",
+                    height: "300px",
+                    objectFit: "contain",
+                  }}
                 />
-                <Grid2 p={2} sx={{ flexGrow: 1, alignItems: "flex-end" }}>
-                  <Typography variant="h5" gutterBottom sx={{
-                    display: '-webkit-box',
-                    WebkitBoxOrient: 'vertical',
-                    overflow: 'hidden',
-                    WebkitLineClamp: 2, 
-                    lineHeight: '1.5em', 
-                    maxHeight: '3em',
-                }}>
+                <Grid2 p={2} sx={{ flexGrow: 1 }}>
+                  <Typography
+                    variant="h5"
+                    gutterBottom
+                    sx={{
+                      display: "-webkit-box",
+                      WebkitBoxOrient: "vertical",
+                      overflow: "hidden",
+                      WebkitLineClamp: 2,
+                      lineHeight: "1.5em",
+                      maxHeight: "3em",
+                      minHeight: "3em",
+                    }}
+                  >
                     {item.title}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary" sx={{
-                    display: '-webkit-box',
-                    WebkitBoxOrient: 'vertical',
-                    overflow: 'hidden',
-                    WebkitLineClamp: 2, 
-                    lineHeight: '1.5em', 
-                    maxHeight: '3em',
-                }}>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{
+                      display: "-webkit-box",
+                      WebkitBoxOrient: "vertical",
+                      overflow: "hidden",
+                      WebkitLineClamp: 2,
+                      lineHeight: "1.5em",
+                      maxHeight: "3em",
+                    }}
+                  >
                     {item.description}
                   </Typography>
                   <Typography mt={2} variant="h5" color="red">

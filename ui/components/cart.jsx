@@ -2,7 +2,7 @@
 
 import React, { useContext } from "react";
 import CartContext from "./Contexts/cartContext";
-import { Typography, Grid2, colors } from "@mui/material";
+import { Typography, Grid2 } from "@mui/material";
 
 const Cart = () => {
   const { cart } = useContext(CartContext);
