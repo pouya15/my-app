@@ -1,28 +1,27 @@
 "use client";
 import { Select, MenuItem } from "@mui/material";
-import { useContext } from "react";
-import ProductContext from "./Contexts/productContext";
 
-const CategorySelectorr = ({
-  // categories,
-  selectedCategory,
-  onCategoryChange,
-}) => {
-  const { products } = useContext(ProductContext);
-
+const CategorySelectorr = ({ categories, onCategoryChange }) => {
   return (
     <Select
-      value={selectedCategory}
-      onChange={onCategoryChange}
+    container
       displayEmpty
-      sx={{ marginBottom: 2 }}
-    >
-      <MenuItem value="">
-        <em>All Categories</em>
-      </MenuItem>
+      sx={{
+        marginBottom: 2,
+        boxShadow: 4,
 
-      {products?.map((category, index) => (
-        <MenuItem key={index} value={category}>
+        backgroundColor: "white",
+        "&:hover": {
+          boxShadow: 8,
+        },
+      }}
+      onChange={(e) => onCategoryChange(e.target.value)}
+      defaultValue=""
+    >
+      <MenuItem value=""> All Categories</MenuItem>
+
+      {categories.map((category) => (
+        <MenuItem key={category} value={category}>
           {category}
         </MenuItem>
       ))}

@@ -2,20 +2,27 @@
 import React, { useEffect, useState } from "react";
 import Card from "@/ui/components/card";
 import { Grid2 } from "@mui/material";
-import CategorySelector from "../categorySelector/page";
 import ProductContext from "@/ui/components/Contexts/productContext";
 import CategorySelectorr from "@/ui/components/categorySelector";
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
 
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
-      .then((res) => res.json())
-      .then((json) => {
-        setProducts(json);
-      });
+    const fetchProducts = async () => {
+      const response = await fetch("https://fakestoreapi.com/products");
+      const json = await response.json();
+      setProducts(json);
+      const categoriesResponse = await fetch(
+        "https://fakestoreapi.com/products/categories"
+      );
+      const categoriesData = await categoriesResponse.json();
+      setCategories(categoriesData);
+    };
+
+    fetchProducts();
   }, []);
 
   const handleCategoryChange = (category) => {
@@ -30,7 +37,10 @@ const HomePage = () => {
     <>
       <ProductContext.Provider value={{ products, setProducts }}>
         <Grid2 container>
-          <CategorySelectorr onCategoryChange={handleCategoryChange} />
+          <CategorySelectorr
+            onCategoryChange={handleCategoryChange}
+            categories={categories}
+          />
           <Card items={filteredProducts} />
         </Grid2>
       </ProductContext.Provider>

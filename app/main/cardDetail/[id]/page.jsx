@@ -8,12 +8,22 @@ import AddToCartCounter from "@/ui/components/addToCart";
 const CardDetail = () => {
   const [detailProduct, setDetailProduct] = useState([]);
   const { id } = useParams();
+  // useEffect(() => {
+  //   fetch(`https://fakestoreapi.com/products/${id}`)
+  //     .then((res) => res.json())
+  //     .then((json) => {
+  //       setDetailProduct(json);
+  //     });
+  // }, []);
+
   useEffect(() => {
-    fetch(`https://fakestoreapi.com/products/${id}`)
-      .then((res) => res.json())
-      .then((json) => {
-        setDetailProduct(json);
-      });
+    const fetchProducts = async () => {
+      const response = await fetch(`https://fakestoreapi.com/products/${id}`);
+      const json = await response.json();
+      setDetailProduct(json);
+    };
+
+    fetchProducts();
   }, []);
   return (
     <Container>
