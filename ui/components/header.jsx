@@ -21,7 +21,7 @@ const Header = () => {
         position: "sticky",
         top: 0,
         boxShadow: 4,
-        zIndex:1
+        zIndex:2
       }}
     >
       <Grid item xs={6}>
