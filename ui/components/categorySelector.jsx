@@ -4,7 +4,7 @@ import { Select, MenuItem } from "@mui/material";
 const CategorySelectorr = ({ categories, onCategoryChange }) => {
   return (
     <Select
-    container
+      container
       displayEmpty
       sx={{
         marginBottom: 2,

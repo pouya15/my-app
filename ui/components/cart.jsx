@@ -3,6 +3,7 @@
 import React, { useContext } from "react";
 import CartContext from "./Contexts/cartContext";
 import { Typography, Grid2 } from "@mui/material";
+import SentimentVeryDissatisfiedOutlinedIcon from "@mui/icons-material/SentimentVeryDissatisfiedOutlined";
 
 const Cart = () => {
   const { cart } = useContext(CartContext);
@@ -13,7 +14,8 @@ const Cart = () => {
       {cart.length === 0 ? (
         <Grid2>
           <Typography variant="h3" sx={{ color: "red" }}>
-            Your cart is empty!
+            Your cart is empty!{" "}
+            <SentimentVeryDissatisfiedOutlinedIcon fontSize="large" />
           </Typography>
         </Grid2>
       ) : (

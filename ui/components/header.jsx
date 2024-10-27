@@ -21,13 +21,13 @@ const Header = () => {
         position: "sticky",
         top: 0,
         boxShadow: 4,
-        zIndex:2
+        zIndex: 2,
       }}
     >
       <Grid item xs={6}>
-          <Typography variant="h6" textDecoration='none'>
-            My Products
-          </Typography>
+        <Typography variant="h6" textDecoration="none">
+          My Products
+        </Typography>
       </Grid>
       <Grid item xs={6} container justifyContent="flex-end">
         <Grid>

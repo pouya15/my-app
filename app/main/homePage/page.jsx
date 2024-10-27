@@ -11,6 +11,7 @@ const HomePage = () => {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -25,6 +26,8 @@ const HomePage = () => {
         setCategories(categoriesData);
       } catch (error) {
         console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -57,20 +60,33 @@ const HomePage = () => {
             onCategoryChange={handleCategoryChange}
             categories={categories}
           />
-       
 
-           <TextField
+          <TextField
             id="outlined-search"
             label="Search products..."
             type="search"
             value={searchQuery}
             onChange={handleSearchChange}
-            sx={{mx:2}}
-          /> 
+            sx={{ mx: 2 }}
+          />
 
           {/* <SearchBox onChange={handleSearchChange}/> */}
 
-          <Card items={filteredProducts} />
+          {/* <Card items={filteredProducts} /> */}
+          <Grid2 container>
+            {loading
+              ? Array.from(new Array(6)).map((_, index) => (
+                  <Card key={index} loading={true} />
+                ))
+              : filteredProducts.map((product) => (
+                  <Card
+                    key={product.id}
+                    product={product}
+                    items={filteredProducts}
+                    loading={false}
+                  />
+                ))}
+          </Grid2>
         </Grid2>
       </ProductContext.Provider>
     </>
