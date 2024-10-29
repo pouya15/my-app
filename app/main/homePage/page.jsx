@@ -4,7 +4,7 @@ import Card from "@/ui/components/card";
 import { Grid2, TextField } from "@mui/material";
 import ProductContext from "@/ui/components/Contexts/productContext";
 import CategorySelectorr from "@/ui/components/categorySelector";
-import SearchBox from "@/ui/components/searchBox";
+import SkeletonCard from "@/ui/components/Skeleton/skeletonCard";
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
@@ -56,11 +56,12 @@ const HomePage = () => {
     <>
       <ProductContext.Provider value={{ products, setProducts }}>
         <Grid2 container>
-          <CategorySelectorr
-            onCategoryChange={handleCategoryChange}
-            categories={categories}
-          />
-
+          <Grid2 item>
+            <CategorySelectorr
+              onCategoryChange={handleCategoryChange}
+              categories={categories}
+            />
+          </Grid2>
           <TextField
             id="outlined-search"
             label="Search products..."
@@ -71,22 +72,17 @@ const HomePage = () => {
           />
 
           {/* <SearchBox onChange={handleSearchChange}/> */}
-
+        </Grid2>
+        <Grid2 container>
           {/* <Card items={filteredProducts} /> */}
-          <Grid2 container>
-            {loading
-              ? Array.from(new Array(6)).map((_, index) => (
-                  <Card key={index} loading={true} />
-                ))
-              : filteredProducts.map((product) => (
-                  <Card
-                    key={product.id}
-                    product={product}
-                    items={filteredProducts}
-                    loading={false}
-                  />
-                ))}
-          </Grid2>
+
+          {loading
+            ? Array.from(new Array(12)).map((_, index) => (
+                <SkeletonCard key={index} />
+              ))
+            : filteredProducts.map((product) => (
+                <Card key={product.id} item={product} loading={false} />
+              ))}
         </Grid2>
       </ProductContext.Provider>
     </>

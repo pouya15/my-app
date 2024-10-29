@@ -1,11 +1,10 @@
 "use client";
+import "./globals.css";
 import Container from "@mui/material/Container";
 import Header from "../ui/components/header";
 import ThemeProvide from "../theme/ThemeProvider";
-import "./globals.css";
 import CartContext from "../ui/components/Contexts/cartContext";
 import { useState } from "react";
-
 export default function RootLayout({ children }) {
   const [cart, setCart] = useState([]);
   return (
